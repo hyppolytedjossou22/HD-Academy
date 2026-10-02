@@ -1,0 +1,121 @@
+/* ===== 1. COULEURS ET BASE ===== */
+  :root {
+    --fond: #bec4d5;;      /* couleur de fond : change-la ici */
+    --encre: #09111e;     /* texte */
+    --vert: #008751;      /* vert du drapeau béninois */
+    --rouge: #e8112d;     /* rouge du drapeau béninois */
+  }
+  * { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+  }
+  html { 
+    scroll-behavior: smooth; 
+  }
+  body {
+    background: var(--fond);
+    color: var(--encre);
+    font-family: "Bricolage Grotesque", system-ui, sans-serif;
+    line-height: 1.55;
+  }
+
+  /* Le canvas 3D reste fixe derrière le texte */
+  #scene {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+
+  /* ===== 2. SECTIONS PLEIN ÉCRAN ===== */
+  main { position: relative; z-index: 1; }
+  section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0 6vw;
+  }
+  /* Le texte alterne gauche / droite pour laisser la place à l'objet 3D */
+  section.gauche { justify-content: flex-start; }
+  section.droite { justify-content: flex-end; }
+  section.centre { justify-content: center; text-align: center; }
+
+  .bloc { max-width: 30rem; }
+  h3 {
+    font-size: 50px;
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+  }
+  .bloc strong{
+    color: coral;
+  }
+  .bloc em{
+    color: blue;
+  }
+  h2 {
+    font-size: clamp(2rem, 5vw, 3.6rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+    color: rgb(253, 92, 175);
+    box-shadow: 10px 0px 10px 0px rgb(182, 223, 80);
+  }
+  p { font-size: 1.15rem; margin-bottom: 1.5rem; }
+
+  .bouton {
+    display: inline-block;
+    background: black;
+    color: rgb(234, 230, 228);
+    padding: 0.9rem 1.6rem;
+    border-radius: 999px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .bouton:hover, .bouton:focus-visible { background: var(--vert); color: orange; transform: translateY(-2px); }
+  .bouton:focus-visible { outline: 3px solid var(--rouge); outline-offset: 3px; }
+
+  /* ===== SECTION DES OUTILS IA ===== */
+  section.outils { display: block; padding-top: 12vh; padding-bottom: 12vh; }
+  .outils-intro { max-width: 34rem; margin-bottom: 2.5rem; }
+  .liste-ia {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: 0 2.5rem;
+    background: rgba(221, 134, 205, 0.92); /* fond quasi plein pour bien lire par-dessus la 3D */
+    padding: 1rem 2rem 2rem;
+    border-radius: 1rem;
+  }
+  .ia { border-top: 3px solid var(--encre); padding: 1.2rem 0; }
+  .ia:nth-child(3n+1) { border-top-color: var(--vert); }
+  .ia:nth-child(3n+2) { border-top-color: var(--rouge); }
+  .ia h3 { font-size: 1.5rem; font-weight: 800; margin-bottom: 0.4rem; }
+  .ia p { font-size: 1rem; margin-bottom: 0.6rem; }
+  .ia .essai { font-weight: 600; }
+  .ia button{ background-color: rgb(249, 217, 174); color: rgb(48, 67, 22); box-shadow: 0px 10px 10px 0px rgb(199, 144, 173); padding: 10px; border-radius: 10px; &:hover {transform: translateY(5s); background-color: rgb(241, 235, 235); } }
+
+  /* Sur téléphone, le texte passe sur un fond léger pour rester lisible */
+  @media (max-width: 700px) {
+    section { justify-content: center !important; align-items: flex-end; padding-bottom: 12vh; }
+    .bloc { background: rgba(248, 255, 111, 0.82); padding: 1.2rem; border-radius: 1rem; }
+  }
+
+/* ===== LIENS ET PAGES DE COURS ===== */
+.lien-cours { font-weight: 600; color: var(--vert); text-underline-offset: 4px; }
+.lien-cours:focus-visible { outline: 3px solid var(--rouge); outline-offset: 3px; }
+.cours { max-width: 44rem; margin: 0 auto; padding: 6vh 6vw 12vh; }
+.cours .retour { display: inline-block; margin-bottom: 3rem; color: var(--encre); font-weight: 600; }
+.cours h1 { font-size: clamp(2.5rem, 8vw, 5rem); margin-bottom: 1rem; }
+.cours .chapo { font-size: 1.35rem; margin-bottom: 3rem; }
+.cours h2 { margin-top: 3.5rem; border-top: 3px solid var(--vert); padding-top: 1.2rem; }
+.cours h3 { font-size: 1.3rem; font-weight: 800; margin: 1.8rem 0 0.5rem; }
+.cours ul, .cours ol { margin: 0 0 1.5rem 1.4rem; font-size: 1.15rem; }
+.cours li { margin-bottom: 0.5rem; }
+.cours .modele { background: var(--encre); color: var(--fond); padding: 1.2rem 1.4rem; border-radius: 0.75rem; margin-bottom: 1.5rem; font-size: 1.05rem; }
+.cours .exercice { border-left: 6px solid var(--rouge); padding: 0.5rem 0 0.5rem 1.2rem; margin-bottom: 1.5rem; }
+.cours .attention { border-left: 6px solid var(--vert); padding: 0.5rem 0 0.5rem 1.2rem; margin-bottom: 1.5rem; }

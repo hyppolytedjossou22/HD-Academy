@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cours GitHub Copilot — HD-ACADEMY</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
+<script src="Acces.js"></script>
+<link rel="stylesheet" href="HD-Academy.css">
+</head>
+<body>
+<main class="cours">
+  <a class="retour" href="HD-Academy.html">Retour à LearnProd</a>
+  <h1>Maîtriser GitHub Copilot</h1>
+  <p class="chapo">Un cours complet pour programmer avec un assistant de code : l'utiliser pour avancer plus vite, comprendre ce qu'il écrit et continuer à progresser toi-même.</p>
+
+  <h2>Chapitre 1. Comprendre ce qu'est GitHub Copilot</h2>
+  <p>GitHub Copilot est un assistant de programmation qui s'installe dans un éditeur de code. Pendant que tu écris, il peut te suggérer la suite de ton code. Il propose aussi une zone de discussion où tu peux lui poser des questions sur ton code.</p>
+  <h3>Comment il fonctionne, en simple</h3>
+  <p>Copilot s'appuie sur un modèle d'IA entraîné sur de grandes quantités de code et de texte. Il regarde ce que tu as déjà écrit (le fichier, les commentaires, les noms de fonctions) et prédit ce qui est probablement la suite. Il ne comprend pas ton projet comme un développeur humain : il propose des suggestions plausibles, pas des garanties.</p>
+  <h3>Ce qu'il peut faire</h3>
+  <ul>
+    <li>Compléter une ligne ou une fonction.</li>
+    <li>Expliquer un morceau de code que tu ne comprends pas.</li>
+    <li>Proposer une correction à partir d'un message d'erreur.</li>
+    <li>Suggérer des tests ou des commentaires.</li>
+  </ul>
+
+  <h2>Chapitre 2. Bien démarrer</h2>
+  <ol>
+    <li>Crée un compte sur GitHub, le site officiel.</li>
+    <li>Regarde sur la page officielle de Copilot quelle offre est disponible pour toi. Il existe parfois des offres gratuites ou pour étudiants : vérifie si tu es éligible.</li>
+    <li>Installe un éditeur de code, par exemple Visual Studio Code.</li>
+    <li>Ajoute l'extension officielle GitHub Copilot depuis l'éditeur, puis connecte ton compte GitHub.</li>
+    <li>Ouvre un fichier et commence à écrire : des suggestions apparaissent en gris. Tu peux les accepter ou les ignorer, par exemple avec la touche Tab pour accepter.</li>
+  </ol>
+  <p>Les offres et les fonctions de Copilot évoluent régulièrement. Vérifie toujours la page officielle.</p>
+  <div class="attention"><p>Installe uniquement l'extension officielle depuis la boutique de ton éditeur. Méfie-toi des fichiers « Copilot gratuit » téléchargés sur des sites inconnus : ils peuvent contenir des virus.</p></div>
+
+  <h2>Chapitre 3. Guider Copilot avec de bons commentaires</h2>
+  <p>La qualité des suggestions dépend de ce que tu écris. Un commentaire clair au-dessus d'une fonction est une consigne.</p>
+  <h3>Avant / après</h3>
+  <p>Consigne floue :</p>
+  <div class="modele"><pre style="white-space:pre-wrap;font-family:monospace;margin:0">// calcul</pre></div>
+  <p>Consigne précise :</p>
+  <div class="modele"><pre style="white-space:pre-wrap;font-family:monospace;margin:0">// Fonction moyenne(notes) : reçoit un tableau de nombres entre 0 et 20,
+// retourne la moyenne arrondie à une décimale.
+// Si le tableau est vide, retourne 0.</pre></div>
+  <h3>Les habitudes qui aident</h3>
+  <ul>
+    <li>Donne des noms clairs aux fonctions et aux variables.</li>
+    <li>Décris l'entrée (ce que la fonction reçoit) et la sortie (ce qu'elle retourne).</li>
+    <li>Mentionne les cas particuliers : tableau vide, texte vide, nombre négatif.</li>
+    <li>Garde ton fichier propre : un code désordonné donne des suggestions désordonnées.</li>
+  </ul>
+  <div class="exercice"><p><strong>Exercice 1.</strong> Écris le commentaire d'une fonction qui compte les mots d'un texte. Regarde la suggestion, puis améliore ton commentaire pour obtenir une meilleure version.</p></div>
+
+  <h2>Chapitre 4. Comprendre et corriger avec le chat</h2>
+  <p>Selon ton offre, tu disposes d'une zone de discussion avec Copilot. Elle est très utile pour apprendre.</p>
+  <h3>Demandes utiles</h3>
+  <div class="modele">Explique ce code ligne par ligne, avec des mots simples, comme si j'étais débutant.</div>
+  <div class="modele">J'obtiens cette erreur : [colle le message]. Explique-moi ce qu'elle signifie et ce que je dois vérifier, sans me donner directement la solution.</div>
+  <div class="modele">Propose 3 cas de test pour cette fonction, y compris des cas limites.</div>
+  <h3>La méthode pour déboguer</h3>
+  <ol>
+    <li>Lis le message d'erreur en entier, avec le numéro de ligne.</li>
+    <li>Formule ton hypothèse : « Je pense que le problème vient de… »</li>
+    <li>Demande à Copilot de la confirmer ou de la corriger.</li>
+    <li>Teste ta correction et vérifie que le problème a disparu.</li>
+  </ol>
+  <div class="exercice"><p><strong>Exercice 2.</strong> Provoque volontairement une erreur dans un petit programme. Essaie de la comprendre seul, puis demande à Copilot de l'expliquer sans donner la solution. Compare vos explications.</p></div>
+
+  <h2>Chapitre 5. Apprendre à programmer sans perdre tes compétences</h2>
+  <p>Le piège, c'est d'accepter tout ce que l'outil propose sans comprendre. Tu avances vite, mais tu n'apprends pas.</p>
+  <h3>La règle des 4 temps</h3>
+  <ol>
+    <li><strong>Réfléchis</strong> : quelle est ta solution ? Écris ton plan en commentaires.</li>
+    <li><strong>Essaie</strong> : écris une première version seul.</li>
+    <li><strong>Compare</strong> : regarde la suggestion de Copilot et demande-toi ce qu'elle fait de mieux ou de différent.</li>
+    <li><strong>Explique</strong> : tu dois pouvoir expliquer chaque ligne que tu gardes.</li>
+  </ol>
+  <h3>Un test simple</h3>
+  <p>Efface la suggestion et réécris la fonction de mémoire quelques jours plus tard. Si tu n'y arrives pas, c'est que tu as copié sans comprendre.</p>
+  <h3>Les bases d'abord</h3>
+  <p>Continue à apprendre HTML, CSS et JavaScript par la pratique. Copilot aide un développeur qui comprend les bases, il ne les remplace pas.</p>
+  <div class="exercice"><p><strong>Exercice 3.</strong> Choisis un exercice simple, par exemple inverser un mot. Applique la règle des 4 temps et écris trois lignes qui expliquent comment fonctionne la version finale.</p></div>
+
+  <h2>Chapitre 6. Limites, sécurité et bonnes pratiques</h2>
+  <ul>
+    <li><strong>Code faux</strong> : une suggestion peut sembler correcte et contenir une erreur. Teste toujours.</li>
+    <li><strong>Fonctions inventées</strong> : il peut proposer des fonctions ou des bibliothèques qui n'existent pas. Vérifie dans la documentation officielle.</li>
+    <li><strong>Failles de sécurité</strong> : un code généré peut être vulnérable. Sois prudent avec les mots de passe, les formulaires et les bases de données.</li>
+    <li><strong>Secrets</strong> : ne mets jamais de mots de passe, clés d'accès ou jetons dans ton code ni dans tes questions.</li>
+    <li><strong>Licences</strong> : respecte les règles de licence du code que tu réutilises.</li>
+    <li><strong>Projets d'école</strong> : respecte les consignes de ton enseignant sur l'utilisation de l'IA.</li>
+  </ul>
+
+  <h2>Chapitre 7. Projet final</h2>
+  <div class="exercice"><p><strong>Projet.</strong> Crée une petite page web « Calculateur de moyenne » :
+    <br>1. Fais un plan en commentaires : champs de saisie, bouton, résultat.
+    <br>2. Écris toi-même le HTML de base.
+    <br>3. Utilise Copilot pour t'aider avec la fonction JavaScript qui calcule la moyenne, en écrivant d'abord un commentaire précis.
+    <br>4. Teste avec au moins cinq cas : notes normales, une seule note, aucune note, note négative, note supérieure à 20.
+    <br>5. Corrige les cas qui échouent.
+    <br>6. Explique ton code, ligne par ligne, à quelqu'un d'autre.</p></div>
+
+  <h2>À retenir</h2>
+  <ul>
+    <li>Copilot suggère, c'est toi qui décides.</li>
+    <li>Un commentaire clair donne de meilleures suggestions.</li>
+    <li>Teste et comprends chaque ligne que tu gardes.</li>
+    <li>Protège tes secrets et continue à apprendre les bases.</li>
+  </ul>
+</main>
+</body>
+</html>
