@@ -1,7 +1,7 @@
 // Bloque l'accès aux cours tant que la personne n'est pas inscrite
 let inscrit = false;
 try {
-  inscrit = localStorage.getItem("HD-Academy_inscrit") === "oui";
+  inscrit = localStorage.getItem("learnprod_inscrit") === "oui";
 } catch (e) {
   inscrit = false;
 }
