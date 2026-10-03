@@ -14,27 +14,11 @@ body {
     justify-content: center;
     background-color: rgb(240, 215, 183);
     font-family: Arial, sans-serif;
-    
 }
-form{
-    box-shadow: 0 10px 70px rgb(121, 121, 232);
-} 
-
-/* Logo */
-body > h1 {
-    font-size: 45px;
-    margin-bottom: 25px;
-}
-
-strong {
-    color: coral;
-}
-
-em {
-    color: blue;
-}
-
-/* Formulaire */
+form { box-shadow: 0 10px 70px rgb(121, 121, 232); }
+body > h1 { font-size: 45px; margin-bottom: 25px; }
+strong { color: coral; }
+em { color: blue; }
 #loginForm {
     width: 90%;
     max-width: 500px;
@@ -44,23 +28,8 @@ em {
     border: 2px solid rgb(0, 102, 255);
     box-sizing: border-box;
 }
-
-/* Titre */
-#loginForm h2 {
-    text-align: center;
-    color: rgb(0, 102, 255);
-    margin-bottom: 25px;
-}
-
-/* Labels */
-#loginForm label {
-    display: block;
-    margin-bottom: 8px;
-    font-size: 16px;
-    font-weight: bold;
-}
-
-/* Champs */
+#loginForm h2 { text-align: center; color: rgb(0, 102, 255); margin-bottom: 25px; }
+#loginForm label { display: block; margin-bottom: 8px; font-size: 16px; font-weight: bold; }
 #loginForm input {
     width: 100%;
     padding: 12px;
@@ -70,13 +39,7 @@ em {
     box-sizing: border-box;
     font-size: 15px;
 }
-
-#loginForm input:focus {
-    outline: none; 
-    border: 2px solid rgb(0, 102, 255);
-}
-
-/* Bouton */
+#loginForm input:focus { outline: none; border: 2px solid rgb(0, 102, 255); }
 #loginForm button {
     width: 100%;
     padding: 12px;
@@ -88,99 +51,81 @@ em {
     font-weight: bold;
     cursor: pointer;
 }
-#loginForm button:focus{
-    background-color: rgb(0, 255, 55);
-}
-
-/* Lien inscription */
-#loginForm p {
-    text-align: center;
-    margin-top: 20px;
-}
-
-#loginForm a {
-    color: rgb(0, 102, 255);
-    font-weight: bold;
-    text-decoration: none;
-}
-
-#loginForm a:hover {
-    text-decoration: underline;
-}
-p{
-    margin-bottom: 20px;
-}
-
-/* Téléphone */
+#loginForm button:focus { background-color: rgb(0, 255, 55); }
+#loginForm #message { color: #c40018; font-weight: bold; margin: 0 0 15px; min-height: 1.2em; }
+#loginForm p { text-align: center; margin-top: 20px; }
+#loginForm a { color: rgb(0, 102, 255); font-weight: bold; text-decoration: none; }
+#loginForm a:hover { text-decoration: underline; }
+p { margin-bottom: 20px; }
 @media (max-width: 500px) {
-    #loginForm {
-        padding: 20px;
-    }
-
-    body > h1 {
-        font-size: 35px;
-        text-align: center;
-    }
-    h1 > img{
-        height: 50px;
-        width: 50px;
-    }
+    #loginForm { padding: 20px; }
+    body > h1 { font-size: 35px; text-align: center; }
+    h1 > img { height: 50px; width: 50px; }
 }
-</style>
+    </style>
 </head>
-
 <body>
 
-    <h1> <img src="1790783313106.jpg" alt="logo" height="100px" width="100px"> <strong>HD</strong><em>ACADEMY</em></h1>
+    <h1><img src="1790783313106.jpg" alt="logo" height="100" width="100"> <strong>HD</strong><em>ACADEMY</em></h1>
 
     <form id="loginForm">
-
         <h2>Connexion</h2>
 
-        <label for="loginEmail">Votre Mail :</label>
-        <input type="email" id="loginEmail" required>
-
-        <br><br>
+        <label for="loginEmail">Votre e-mail :</label>
+        <input type="email" id="loginEmail" autocomplete="email" required>
 
         <label for="loginPassword">Mot de passe :</label>
-        <input type="password" id="loginPassword" required>
+        <input type="password" id="loginPassword" autocomplete="current-password" required>
 
-        <br><br>
+        <p id="message" role="alert"></p>
 
         <button type="submit">Se connecter</button>
 
         <p>
-            Vous n'avez pas un compte ?
+            Vous n'avez pas de compte ?
             <a href="login.html">Créez un compte</a>
         </p>
-
     </form>
 
     <script>
-        const loginForm = document.getElementById("loginForm");
+    // Transforme le mot de passe en empreinte : on ne garde jamais le mot de passe lui-même
+    async function hashMotDePasse(email, mdp) {
+      const donnees = new TextEncoder().encode(email.toLowerCase() + ":" + mdp);
+      const empreinte = await crypto.subtle.digest("SHA-256", donnees);
+      return Array.from(new Uint8Array(empreinte))
+        .map(function (b) { return b.toString(16).padStart(2, "0"); })
+        .join("");
+    }
 
-        loginForm.addEventListener("submit", function(e) {
-            e.preventDefault();
+    const formulaire = document.getElementById("loginForm");
+    const message = document.getElementById("message");
 
-            const nom = document.getElementById("loginNom").value;
-            const password = document.getElementById("loginPassword").value;
+    formulaire.addEventListener("submit", async function (e) {
+      e.preventDefault();
 
-            const nomEnregistre = localStorage.getItem("nom");
-            const passwordEnregistre = localStorage.getItem("password");
+      const email = document.getElementById("loginEmail").value.trim().toLowerCase();
+      const mdp = document.getElementById("loginPassword").value;
 
-            if (nom === nomEnregistre && password === passwordEnregistre) {
+      let compte = null;
+      try { compte = JSON.parse(localStorage.getItem("learnprod_compte")); } catch (err) { compte = null; }
 
-                localStorage.setItem("isLogged", "true");
+      if (!compte) {
+        message.textContent = "Aucun compte trouvé sur cet appareil. Crée d'abord ton compte.";
+        return;
+      }
 
-                alert("Connexion réussie !");
-
-                window.location.href = "ChatGPT.html";
-
-            } else {
-                alert("Nom ou mot de passe incorrect.");
-            }
-        });
+      try {
+        const hash = await hashMotDePasse(email, mdp);
+        if (email === compte.email && hash === compte.hash) {
+          localStorage.setItem("learnprod_inscrit", "oui");
+          window.location.href = "index.html";
+        } else {
+          message.textContent = "E-mail ou mot de passe incorrect.";
+        }
+      } catch (err) {
+        message.textContent = "Connexion impossible sur ce navigateur.";
+      }
+    });
     </script>
-
 </body>
 </html>
