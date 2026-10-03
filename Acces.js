@@ -6,11 +6,9 @@ try {
   inscrit = false;
 }
 
-if (inscrit) {
-  // Inscrit : on laisse le cours s'afficher normalement
-} else {
+if (!inscrit) {
   // Pas inscrit : on cache la page, on prévient, puis on envoie vers l'inscription
   document.documentElement.style.visibility = "hidden";
   alert("Inscris-toi gratuitement pour accéder aux cours.");
-  window.location.replace("login.html");
+  window.location.replace("/login.html");
 }
