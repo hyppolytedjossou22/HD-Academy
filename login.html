@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscription - HD-ACADEMY</title>
     <style>
-        body {
+body {
     margin: 20px;
     min-height: 100vh;
     display: flex;
@@ -16,13 +16,9 @@
     font-family: Arial, sans-serif;
 }
 form { box-shadow: 0 10px 70px rgb(121, 121, 232); }
-
-/* Logo */
 body > h1 { font-size: 45px; margin-bottom: 25px; }
 strong { color: coral; }
 em { color: blue; }
-
-/* Formulaire */
 #loginForm {
     width: 90%;
     max-width: 500px;
@@ -44,8 +40,6 @@ em { color: blue; }
     font-size: 15px;
 }
 #loginForm input:focus { outline: none; border: 2px solid rgb(0, 102, 255); }
-
-/* Bouton */
 #loginForm button {
     width: 100%;
     padding: 12px;
@@ -58,17 +52,11 @@ em { color: blue; }
     cursor: pointer;
 }
 #loginForm button:focus { background-color: rgb(0, 255, 55); }
-
-/* Message d'erreur */
 #loginForm #message { color: #c40018; font-weight: bold; margin: 0 0 15px; min-height: 1.2em; }
-
-/* Lien connexion */
 #loginForm p { text-align: center; margin-top: 20px; }
 #loginForm a { color: rgb(0, 102, 255); font-weight: bold; text-decoration: none; }
 #loginForm a:hover { text-decoration: underline; }
 p { margin-bottom: 20px; }
-
-/* Téléphone */
 @media (max-width: 500px) {
     #loginForm { padding: 20px; }
     body > h1 { font-size: 35px; text-align: center; }
@@ -84,25 +72,25 @@ p { margin-bottom: 20px; }
         <h2>Inscription</h2>
 
         <label for="nom">Votre nom :</label>
-        <input type="text" id="nom" name="nom" placeholder="Ex: YYYYYYY" autocomplete="family-name" required>
+        <input type="text" id="nom" autocomplete="family-name" required>
 
         <label for="prenom">Votre prénom :</label>
-        <input type="text" id="prenom" name="prenom" placeholder="Ex: Xxxxxxxx" autocomplete="given-name" required>
+        <input type="text" id="prenom" autocomplete="given-name" required>
 
         <label for="telephone">Votre numéro de téléphone :</label>
-        <input type="tel" id="telephone" name="telephone" placeholder="Ex: 01 46 63 73 74" autocomplete="tel" required>
+        <input type="tel" id="telephone" autocomplete="tel" required>
 
         <label for="whatsapp">Votre numéro WhatsApp :</label>
-        <input type="tel" id="whatsapp" name="whatsapp" required>
+        <input type="tel" id="whatsapp" required>
 
         <label for="email">Votre e-mail :</label>
-        <input type="email" id="email" name="email" placeholder="Ex: nom@exemple.com" autocomplete="email" required>
+        <input type="email" id="email" autocomplete="email" required>
 
         <label for="mdp">Créez un mot de passe :</label>
-        <input type="password" id="mdp" name="mdp" placeholder="6 caractères minimum" minlength="6" autocomplete="new-password" required>
+        <input type="password" id="mdp" placeholder="6 caractères minimum" minlength="6" autocomplete="new-password" required>
 
         <label for="mdp2">Confirmez le mot de passe :</label>
-        <input type="password" id="mdp2" name="mdp2" autocomplete="new-password" required>
+        <input type="password" id="mdp2" autocomplete="new-password" required>
 
         <p id="message" role="alert"></p>
 
@@ -110,11 +98,52 @@ p { margin-bottom: 20px; }
 
         <p>
             Déjà un compte ?
-            <!-- <a href="#">Se connecter</a> -->
             <a href="login-0.html">Se connecter</a>
         </p>
     </form>
 
-    <script src="login.js"></script>
+    <script>
+    // Transforme le mot de passe en empreinte : on ne garde jamais le mot de passe lui-même
+    async function hashMotDePasse(email, mdp) {
+      const donnees = new TextEncoder().encode(email.toLowerCase() + ":" + mdp);
+      const empreinte = await crypto.subtle.digest("SHA-256", donnees);
+      return Array.from(new Uint8Array(empreinte))
+        .map(function (b) { return b.toString(16).padStart(2, "0"); })
+        .join("");
+    }
+
+    const formulaire = document.getElementById("loginForm");
+    const message = document.getElementById("message");
+
+    formulaire.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const prenom = document.getElementById("prenom").value.trim();
+      const email = document.getElementById("email").value.trim().toLowerCase();
+      const mdp = document.getElementById("mdp").value;
+      const confirmation = document.getElementById("mdp2").value;
+
+      if (mdp.length < 6) {
+        message.textContent = "Le mot de passe doit contenir au moins 6 caractères.";
+        return;
+      }
+      if (mdp !== confirmation) {
+        message.textContent = "Les deux mots de passe ne sont pas identiques.";
+        return;
+      }
+
+      try {
+        const hash = await hashMotDePasse(email, mdp);
+        localStorage.setItem("learnprod_compte", JSON.stringify({ email: email, prenom: prenom, hash: hash }));
+        localStorage.setItem("learnprod_inscrit", "oui");
+        localStorage.setItem("learnprod_prenom", prenom);
+      } catch (err) {
+        message.textContent = "Impossible d'enregistrer l'inscription sur cet appareil.";
+        return;
+      }
+
+      window.location.href = "index.html";
+    });
+    </script>
 </body>
 </html>
