@@ -27,5 +27,5 @@ formulaire.addEventListener("submit", function (e) {
     return;
   }
 
-  window.location.href = "HD-Academy.html";
+  window.location.href = "index.html";
 });
