@@ -3,115 +3,133 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cours GitHub Copilot — HD-ACADEMY</title>
+<title>Cours Claude AI — HD-ACADEMY</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
 <script src="Acces.js"></script>
 <link rel="stylesheet" href="Style.css">
 </head>
+<style>
+  h1{
+    color: rgba(138, 87, 104, 0.699);
+  }
+  em{
+    color: rgb(238 32 32);
+  }
+</style>
 <body>
 <main class="cours">
-  <a class="retour" href="index.html">Retour à LearnProd</a>
-  <h1>Maîtriser GitHub Copilot</h1>
-  <p class="chapo">Un cours complet pour programmer avec un assistant de code : l'utiliser pour avancer plus vite, comprendre ce qu'il écrit et continuer à progresser toi-même.</p>
+  <a class="retour" href="index.html">Retour à HD-ACADEMY</a>
+  <h1>Maîtriser Claude AI</h1>
+  <p class="chapo">Un cours complet pour utiliser Claude comme un tuteur, un relecteur et un assistant de travail, du premier message jusqu'à un projet complet.</p>
 
-  <h2>Chapitre 1. Comprendre ce qu'est GitHub Copilot</h2>
-  <p>GitHub Copilot est un assistant de programmation qui s'installe dans un éditeur de code. Pendant que tu écris, il peut te suggérer la suite de ton code. Il propose aussi une zone de discussion où tu peux lui poser des questions sur ton code.</p>
+  <h2>Chapitre 1. Comprendre ce qu'est Claude</h2>
+  <p><em>Claude</em> est un assistant conversationnel créé par l'entreprise <em> Anthropic</em>. Tu lui écris en langage courant, et il te répond par du texte. Il peut expliquer une notion, rédiger, reformuler, résumer, analyser un document, traduire et aider à programmer.</p>
   <h3>Comment il fonctionne, en simple</h3>
-  <p>Copilot s'appuie sur un modèle d'IA entraîné sur de grandes quantités de code et de texte. Il regarde ce que tu as déjà écrit (le fichier, les commentaires, les noms de fonctions) et prédit ce qui est probablement la suite. Il ne comprend pas ton projet comme un développeur humain : il propose des suggestions plausibles, pas des garanties.</p>
-  <h3>Ce qu'il peut faire</h3>
+  <p>Claude est un modèle de langage : il a été entraîné sur une très grande quantité de textes et produit ses réponses en prédisant, étape par étape, la suite la plus pertinente. Il ne cherche pas dans une base de vérités et il n'est pas une personne. C'est un outil puissant, mais qui peut se tromper.</p>
+  <h3>Où Claude est le plus utile</h3>
   <ul>
-    <li>Compléter une ligne ou une fonction.</li>
-    <li>Expliquer un morceau de code que tu ne comprends pas.</li>
-    <li>Proposer une correction à partir d'un message d'erreur.</li>
-    <li>Suggérer des tests ou des commentaires.</li>
+    <li>Travailler sur des textes longs : cours, articles, rapports.</li>
+    <li>Expliquer clairement, avec des exemples adaptés à ton niveau.</li>
+    <li>Relire et améliorer un texte que tu as écrit.</li>
+    <li>Aider à comprendre, écrire et corriger du code.</li>
   </ul>
 
   <h2>Chapitre 2. Bien démarrer</h2>
   <ol>
-    <li>Crée un compte sur GitHub, le site officiel.</li>
-    <li>Regarde sur la page officielle de Copilot quelle offre est disponible pour toi. Il existe parfois des offres gratuites ou pour étudiants : vérifie si tu es éligible.</li>
-    <li>Installe un éditeur de code, par exemple Visual Studio Code.</li>
-    <li>Ajoute l'extension officielle GitHub Copilot depuis l'éditeur, puis connecte ton compte GitHub.</li>
-    <li>Ouvre un fichier et commence à écrire : des suggestions apparaissent en gris. Tu peux les accepter ou les ignorer, par exemple avec la touche Tab pour accepter.</li>
+    <li>Rends-toi sur le site officiel de Claude, ou installe l'application officielle sur ton téléphone.</li>
+    <li>Crée un compte avec ton adresse e-mail.</li>
+    <li>Écris ton message dans la zone de texte, puis valide.</li>
+    <li>Lis la réponse et continue la discussion : il tient compte de ce qui a été dit plus haut dans la même conversation.</li>
+    <li>Pour changer complètement de sujet, ouvre une nouvelle discussion.</li>
   </ol>
-  <p>Les offres et les fonctions de Copilot évoluent régulièrement. Vérifie toujours la page officielle.</p>
-  <div class="attention"><p>Installe uniquement l'extension officielle depuis la boutique de ton éditeur. Méfie-toi des fichiers « Copilot gratuit » téléchargés sur des sites inconnus : ils peuvent contenir des virus.</p></div>
+  <p>Selon l'offre, tu peux aussi joindre des fichiers (documents, images) à ta demande. Les limites d'utilisation et les fonctions changent régulièrement : regarde toujours ce qui est proposé sur le site officiel.</p>
+  <div class="attention"><p>Utilise uniquement le site ou l'application officiels. <em>ALERT 🔴</em> Méfie-toi des faux sites qui promettent un accès « illimité et gratuit » en échange d'argent ou de mots de passe.</p></div>
 
-  <h2>Chapitre 3. Guider Copilot avec de bons commentaires</h2>
-  <p>La qualité des suggestions dépend de ce que tu écris. Un commentaire clair au-dessus d'une fonction est une consigne.</p>
+  <h2>Chapitre 3. Écrire de bonnes demandes</h2>
+  <p>Ce que tu écris à l'IA s'appelle un prompt. Un bon prompt est comme une bonne consigne donnée à un camarade : clair, complet, avec le but visible.</p>
+  <h3>Les 5 ingrédients</h3>
+  <ul>
+    <li><strong>Contexte</strong> : qui tu es et pourquoi tu demandes (« Je suis en terminale et je prépare l'examen »).</li>
+    <li><strong>Tâche</strong> : ce que tu veux exactement (« Explique-moi les fonctions affines »).</li>
+    <li><strong>Niveau</strong> : pour qui tu veux la réponse (« avec des mots simples »).</li>
+    <li><strong>Format</strong> : la forme voulue (liste, tableau, 8 phrases, dialogue).</li>
+    <li><strong>Exemple</strong> : si possible, montre un exemple de ce que tu attends.</li>
+  </ul>
   <h3>Avant / après</h3>
-  <p>Consigne floue :</p>
-  <div class="modele"><pre style="white-space:pre-wrap;font-family:monospace;margin:0">// calcul</pre></div>
-  <p>Consigne précise :</p>
-  <div class="modele"><pre style="white-space:pre-wrap;font-family:monospace;margin:0">// Fonction moyenne(notes) : reçoit un tableau de nombres entre 0 et 20,
-// retourne la moyenne arrondie à une décimale.
-// Si le tableau est vide, retourne 0.</pre></div>
-  <h3>Les habitudes qui aident</h3>
+  <p>Demande floue :</p>
+  <div class="modele">Aide-moi pour mon exposé.</div>
+  <p>Demande précise :</p>
+  <div class="modele">Je dois faire un exposé de 5 minutes sur l'énergie solaire pour ma classe de seconde. Propose-moi un plan en 4 parties avec, pour chaque partie, 2 idées clés et un exemple concret au Bénin. Utilise des phrases courtes.</div>
+  <h3>Une astuce très efficace : lui demander de te poser des questions</h3>
+  <div class="modele">Avant de répondre, pose-moi les questions dont tu as besoin pour bien comprendre ma situation.</div>
+  <p>Cela évite les réponses génériques et t'apprend à clarifier ce que tu veux.</p>
+  <h3>Améliorer en plusieurs tours</h3>
   <ul>
-    <li>Donne des noms clairs aux fonctions et aux variables.</li>
-    <li>Décris l'entrée (ce que la fonction reçoit) et la sortie (ce qu'elle retourne).</li>
-    <li>Mentionne les cas particuliers : tableau vide, texte vide, nombre négatif.</li>
-    <li>Garde ton fichier propre : un code désordonné donne des suggestions désordonnées.</li>
+    <li>« Raccourcis cette réponse de moitié. »</li>
+    <li>« Explique le deuxième point avec un exemple. »</li>
+    <li>« Refais-le sur un ton plus simple. »</li>
+    <li>« Qu'est-ce qui pourrait manquer dans cette réponse ? »</li>
   </ul>
-  <div class="exercice"><p><strong>Exercice 1.</strong> Écris le commentaire d'une fonction qui compte les mots d'un texte. Regarde la suggestion, puis améliore ton commentaire pour obtenir une meilleure version.</p></div>
+  <div class="exercice"><p><strong>Exercice 1.</strong> Écris une demande floue sur un sujet de ton choix, puis la même demande avec contexte, niveau et format. Compare les deux réponses et note ce qui change.</p></div>
 
-  <h2>Chapitre 4. Comprendre et corriger avec le chat</h2>
-  <p>Selon ton offre, tu disposes d'une zone de discussion avec Copilot. Elle est très utile pour apprendre.</p>
-  <h3>Demandes utiles</h3>
-  <div class="modele">Explique ce code ligne par ligne, avec des mots simples, comme si j'étais débutant.</div>
-  <div class="modele">J'obtiens cette erreur : [colle le message]. Explique-moi ce qu'elle signifie et ce que je dois vérifier, sans me donner directement la solution.</div>
-  <div class="modele">Propose 3 cas de test pour cette fonction, y compris des cas limites.</div>
-  <h3>La méthode pour déboguer</h3>
-  <ol>
-    <li>Lis le message d'erreur en entier, avec le numéro de ligne.</li>
-    <li>Formule ton hypothèse : « Je pense que le problème vient de… »</li>
-    <li>Demande à Copilot de la confirmer ou de la corriger.</li>
-    <li>Teste ta correction et vérifie que le problème a disparu.</li>
-  </ol>
-  <div class="exercice"><p><strong>Exercice 2.</strong> Provoque volontairement une erreur dans un petit programme. Essaie de la comprendre seul, puis demande à Copilot de l'expliquer sans donner la solution. Compare vos explications.</p></div>
-
-  <h2>Chapitre 5. Apprendre à programmer sans perdre tes compétences</h2>
-  <p>Le piège, c'est d'accepter tout ce que l'outil propose sans comprendre. Tu avances vite, mais tu n'apprends pas.</p>
-  <h3>La règle des 4 temps</h3>
-  <ol>
-    <li><strong>Réfléchis</strong> : quelle est ta solution ? Écris ton plan en commentaires.</li>
-    <li><strong>Essaie</strong> : écris une première version seul.</li>
-    <li><strong>Compare</strong> : regarde la suggestion de Copilot et demande-toi ce qu'elle fait de mieux ou de différent.</li>
-    <li><strong>Explique</strong> : tu dois pouvoir expliquer chaque ligne que tu gardes.</li>
-  </ol>
-  <h3>Un test simple</h3>
-  <p>Efface la suggestion et réécris la fonction de mémoire quelques jours plus tard. Si tu n'y arrives pas, c'est que tu as copié sans comprendre.</p>
-  <h3>Les bases d'abord</h3>
-  <p>Continue à apprendre HTML, CSS et JavaScript par la pratique. Copilot aide un développeur qui comprend les bases, il ne les remplace pas.</p>
-  <div class="exercice"><p><strong>Exercice 3.</strong> Choisis un exercice simple, par exemple inverser un mot. Applique la règle des 4 temps et écris trois lignes qui expliquent comment fonctionne la version finale.</p></div>
-
-  <h2>Chapitre 6. Limites, sécurité et bonnes pratiques</h2>
+  <h2>Chapitre 4. Travailler sur des documents</h2>
+  <p>Claude est souvent apprécié pour traiter des textes longs. Tu peux coller le texte dans la discussion, ou le joindre en fichier si l'option est disponible.</p>
+  <h3>Ce que tu peux demander</h3>
   <ul>
-    <li><strong>Code faux</strong> : une suggestion peut sembler correcte et contenir une erreur. Teste toujours.</li>
-    <li><strong>Fonctions inventées</strong> : il peut proposer des fonctions ou des bibliothèques qui n'existent pas. Vérifie dans la documentation officielle.</li>
-    <li><strong>Failles de sécurité</strong> : un code généré peut être vulnérable. Sois prudent avec les mots de passe, les formulaires et les bases de données.</li>
-    <li><strong>Secrets</strong> : ne mets jamais de mots de passe, clés d'accès ou jetons dans ton code ni dans tes questions.</li>
-    <li><strong>Licences</strong> : respecte les règles de licence du code que tu réutilises.</li>
-    <li><strong>Projets d'école</strong> : respecte les consignes de ton enseignant sur l'utilisation de l'IA.</li>
+    <li>Un résumé à plusieurs niveaux : en une phrase, puis en cinq points.</li>
+    <li>La liste des mots difficiles avec leur définition.</li>
+    <li>Les arguments pour et contre dans un texte.</li>
+    <li>Une comparaison entre deux documents.</li>
   </ul>
+  <h3>Bon réflexe : l'obliger à rester dans le document</h3>
+  <div class="modele">Réponds uniquement à partir du texte ci-dessous. Si l'information n'y est pas, dis-le-moi au lieu de deviner. [colle ton texte]</div>
+  <div class="exercice"><p><strong>Exercice 2.</strong> Prends un chapitre de ton cours. Demande un résumé en 5 points, puis 5 questions de révision. Réponds sans regarder, puis demande la correction.</p></div>
+
+  <h2>Chapitre 5. Apprendre avec Claude (et pas à ta place)</h2>
+  <p>La meilleure façon d'utiliser l'IA pour étudier est de la faire travailler avec toi, pas à ta place.</p>
+  <h3>Le mode tuteur</h3>
+  <div class="modele">Agis comme un tuteur. Ne me donne pas directement la réponse : guide-moi avec des questions et des indices, une étape à la fois. Voici mon exercice : [exercice].</div>
+  <h3>Autres usages malins</h3>
+  <ul>
+    <li><strong>Expliquer autrement</strong> : « Explique-moi ceci de trois façons différentes. »</li>
+    <li><strong>Trouver mes erreurs</strong> : « Voici ma solution. Dis-moi s'il y a une erreur, sans me donner la correction complète. »</li>
+    <li><strong>Améliorer mon écriture</strong> : écris d'abord ton texte, puis demande des conseils précis.</li>
+    <li><strong>Coder</strong> : demande de t'expliquer un message d'erreur ligne par ligne et propose-lui d'abord ta propre correction.</li>
+  </ul>
+  <div class="exercice"><p><strong>Exercice 3.</strong> Choisis un exercice de maths, de physique ou de programmation. Demande à Claude de te guider sans te donner la réponse. Note à quel moment tu as vraiment compris.</p></div>
+
+  <h2>Chapitre 6. Limites, erreurs et sécurité</h2>
+  <h3>Il peut se tromper</h3>
+  <p>Claude peut produire des informations fausses présentées avec assurance : chiffres, dates, citations, noms. On appelle cela une hallucination. Plus la question est précise ou rare, plus il faut être prudent.</p>
+  <h3>Comment te protéger</h3>
+  <ul>
+    <li>Vérifie les informations importantes dans une source fiable.</li>
+    <li>Demande-lui d'indiquer ce dont il n'est pas sûr.</li>
+    <li>Ne recopie jamais une référence ou une citation sans vérifier qu'elle existe.</li>
+    <li>Pour l'actualité récente, utilise un outil de recherche qui cite ses sources.</li>
+  </ul>
+  <h3>Mémoire et confidentialité</h3>
+  <p>Selon les options activées, une nouvelle discussion peut repartir de zéro. Quoi qu'il en soit, ne partage pas de mots de passe, de données bancaires, de pièces d'identité ni d'informations privées sur d'autres personnes.</p>
+  <h3>Honnêteté scolaire</h3>
+  <p>Respecte les règles de ton établissement. Utilise l'IA pour comprendre, t'entraîner et relire, mais rends un travail qui représente ce que tu sais vraiment faire.</p>
 
   <h2>Chapitre 7. Projet final</h2>
-  <div class="exercice"><p><strong>Projet.</strong> Crée une petite page web « Calculateur de moyenne » :
-    <br>1. Fais un plan en commentaires : champs de saisie, bouton, résultat.
-    <br>2. Écris toi-même le HTML de base.
-    <br>3. Utilise Copilot pour t'aider avec la fonction JavaScript qui calcule la moyenne, en écrivant d'abord un commentaire précis.
-    <br>4. Teste avec au moins cinq cas : notes normales, une seule note, aucune note, note négative, note supérieure à 20.
-    <br>5. Corrige les cas qui échouent.
-    <br>6. Explique ton code, ligne par ligne, à quelqu'un d'autre.</p></div>
+  <div class="exercice"><p><strong>Projet.</strong> Prépare un mini-dossier sur un sujet qui t'intéresse (par exemple, l'agriculture, l'énergie ou la santé au Bénin) en suivant ces étapes :
+    <br>1. Demande à Claude de te poser des questions pour cadrer ton sujet.
+    <br>2. Demande un plan en 3 parties.
+    <br>3. Rédige toi-même chaque partie.
+    <br>4. Demande une relecture avec des conseils précis, sans réécriture complète.
+    <br>5. Vérifie au moins trois informations avec des sources fiables.
+    <br>6. Écris en conclusion ce que tu as appris du sujet et de la méthode.</p></div>
 
   <h2>À retenir</h2>
   <ul>
-    <li>Copilot suggère, c'est toi qui décides.</li>
-    <li>Un commentaire clair donne de meilleures suggestions.</li>
-    <li>Teste et comprends chaque ligne que tu gardes.</li>
-    <li>Protège tes secrets et continue à apprendre les bases.</li>
+    <li>Claude est un modèle de langage : très utile, mais faillible.</li>
+    <li>Un bon prompt donne contexte, tâche, niveau, format et, si possible, un exemple.</li>
+    <li>Demande-lui de te poser des questions et de te guider plutôt que de tout faire.</li>
+    <li>Vérifie les informations importantes et protège tes données.</li>
   </ul>
 </main>
 </body>
